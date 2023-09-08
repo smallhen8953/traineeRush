@@ -26,7 +26,7 @@ function Deliver() {
 
   return (
     <Modal onClose={disableDeliverHandler}>
-      {/* 購物車 */}
+      {/* 地圖 */}
       { !true
       && (
       <>

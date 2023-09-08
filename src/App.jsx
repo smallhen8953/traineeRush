@@ -10,7 +10,7 @@ function App() {
   const { cartIsShown, deliverIsShown, isLoading } = useContext(CartContext);
   return (
     <div className="App"> 
-      {cartIsShown && <Cart />}{/* 顯示彈跳視窗*/}
+      {cartIsShown && <Cart />}
       {deliverIsShown && <Deliver />}
       <Header />
       {!isLoading && <Meals />}
