@@ -1,20 +1,26 @@
-import React, { useContext } from 'react';
+import React, { lazy, useContext, Suspense} from 'react';
 import Header from './components/Header/Header';
 import Meals from './components/Meals/Meals';
-import Cart from './components/Cart/Cart';
 import { CartContext } from './context/Context';
-import ProductDetails from './components/Meals/ProductDetails';
-import Deliver from './components/Deliver/Deliver';
+
+const LazyCart=lazy(()=> import ('./components/Cart/Cart'));
+const LazyProductDetails = lazy(() => import('./components/Meals/ProductDetails'));
 
 function App() {
-  const { cartIsShown, deliverIsShown, isLoading } = useContext(CartContext);
+  const { cartIsShown, isLoading, productDetailIsShown } = useContext(CartContext);
   return (
     <div className="App"> 
-      {cartIsShown && <Cart />}
-      {deliverIsShown && <Deliver />}
+      <Suspense fallback={<div>Loading...</div>}>
+        {cartIsShown && <LazyCart />}  
+      </Suspense>
+      
+
       <Header />
       {!isLoading && <Meals />}
-      {/* <ProductDetails/> */}
+      <Suspense fallback={<div>Loading...</div>}>
+        {productDetailIsShown && <LazyProductDetails />}
+      </Suspense>
+      
     </div>
   );
 }
