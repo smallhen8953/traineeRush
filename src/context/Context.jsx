@@ -8,6 +8,7 @@ export const CartContext = createContext();
 export function CartContextProvider({ children }) {
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [cartIsShown, setCartIsShown] = useState(false);
+  const [deliverIsShown, setDeliverIsShown] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0);
   const [mealItem, setMealItem] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

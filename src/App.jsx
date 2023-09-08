@@ -4,15 +4,17 @@ import Meals from './components/Meals/Meals';
 import Cart from './components/Cart/Cart';
 import { CartContext } from './context/Context';
 import ProductDetails from './components/Meals/ProductDetails';
+import Deliver from './components/Deliver/Deliver';
 
 function App() {
-  const { cartIsShown, isLoading } = useContext(CartContext);
+  const { cartIsShown, deliverIsShown, isLoading } = useContext(CartContext);
   return (
     <div className="App"> 
-      {cartIsShown && <Cart />}
+      {cartIsShown && <Cart />}{/* 顯示彈跳視窗*/}
+      {deliverIsShown && <Deliver />}
       <Header />
       {!isLoading && <Meals />}
-      <ProductDetails/>
+      {/* <ProductDetails/> */}
     </div>
   );
 }
